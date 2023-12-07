@@ -257,5 +257,7 @@ def get_name(sentence, w2v, model, label2class, tf=True):
         elif tag == "I-PER":
             names.append(word)
             print(word, end=" ")
+    if len(names) == 0:
+        print("No name")
     print()
     return names, result
