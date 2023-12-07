@@ -109,10 +109,7 @@ print(report)
 
 
 names, tags = get_name(
-    "আব্দুর রহিম নামের কাস্টমারকে একশ টাকা বাকি দিলাম",
-    model,
-    ann_model,
-    label2class
+    "আব্দুর রহিম নামের কাস্টমারকে একশ টাকা বাকি দিলাম", model, ann_model, label2class
 )
 names, tags = get_name(
     "যুবলীগের কর্মী মাসুম ছাত্রদলের কর্মী সাদ্দামকে গুলি করেন",
@@ -121,10 +118,7 @@ names, tags = get_name(
     label2class,
 )
 names, tags = get_name(
-    "বন্দর থানার ভারপ্রাপ্ত কর্মকর্তা সঞ্জয় সিনহা বলেন",
-    model,
-    ann_model,
-    label2class
+    "বন্দর থানার ভারপ্রাপ্ত কর্মকর্তা সঞ্জয় সিনহা বলেন", model, ann_model, label2class
 )
 
 print("training done!")

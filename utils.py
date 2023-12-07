@@ -1,9 +1,9 @@
 """
 Utility functions
 """
-import tensorflow as tf
 import os
 from collections import Counter
+
 import numpy as np
 
 
@@ -29,11 +29,12 @@ def get_surrounding(sentence, window=3):
         right_idx = window - right_pad
         row = (
             left_pad * ["PAD"]
-            + sentence[i - left_idx : i + 1 + right_idx]
+            + sentence[i - left_idx: i + 1 + right_idx]
             + right_pad * ["PAD"]
         )
         X.append(row)
-        assert len(row) == (2 * window) + 1, f"Length:{len(sentence)}, Row:{row}, i:{i}"
+        assert len(row) == (2 * window) + \
+            1, f"Length:{len(sentence)}, Row:{row}, i:{i}"
 
     return X
 
@@ -51,7 +52,8 @@ def get_token_tags(file_path):
     """
     tokens, tags = [], []
 
-    txt_files = [file for file in os.listdir(file_path) if file.endswith(".txt")]
+    txt_files = [file for file in os.listdir(
+        file_path) if file.endswith(".txt")]
 
     print("Text Files:", txt_files)
 
@@ -207,7 +209,7 @@ def random_indices_by_category(category_array, n_sample):
     return result
 
 
-def get_name(sentence, w2v, model, label2class):
+def get_name(sentence, w2v, model, label2class, tf=True):
     """
     Extracts person names from a given sentence using a specified word embedding model and a trained classification model.
 
@@ -234,12 +236,12 @@ def get_name(sentence, w2v, model, label2class):
     vector = list(map(lambda x: row2vec(x, w2v), feature))
     vector = np.array(vector).reshape(len(vector), -1)
 
-    try:
+    if not tf:
         result = model.predict(vector)
         result = [label2class[tag] for tag in result]
-    except TypeError:
+    else:
         y_pred = model.predict(vector, verbose=False)
-        result = tf.argmax(y_pred, axis=1).numpy().tolist()
+        result = np.argmax(y_pred, axis=1).tolist()
         result = [label2class[tag] for tag in result]
 
     names = []
