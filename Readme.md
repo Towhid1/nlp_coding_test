@@ -83,7 +83,7 @@ To train the model from scratch, follow these steps:
     Extracted names: No name
     ```
 
-3. If you face issue with running code in terminal. Then try this notebook (predict.ipynb).
+3. If you face issue with running code in terminal. Then try this notebook (`predict.ipynb`).
 
 
 ## Contact
