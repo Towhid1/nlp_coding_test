@@ -8,7 +8,7 @@ from utils import get_name
 
 NEW_W2V_PATH = "model/word2vec_new.model"
 LABEL2CLASS_PATH = "model/label2class.joblib"
-MODEL_PATH = "model/trained_ann_model2.h5"
+MODEL_PATH = "model/trained_ann_model.h5"
 
 
 def predict(sentence: str) -> None:
@@ -19,7 +19,9 @@ def predict(sentence: str) -> None:
     model = Word2Vec.load(NEW_W2V_PATH)
     label2class = joblib.load(LABEL2CLASS_PATH)
     ann_model = load_model(MODEL_PATH)
-    get_name(sentence, model, ann_model, label2class)
+    name, tag = get_name(sentence, model, ann_model, label2class)
+    print(name)
+    print(tag)
 
 
 if __name__ == "__main__":

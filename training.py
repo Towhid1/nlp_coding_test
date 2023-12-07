@@ -20,7 +20,7 @@ FILE_PATH = "annotated data/"
 W2V_PATH = "model/word2vec.model"
 NEW_W2V_PATH = "model/word2vec_new.model"
 LABEL2CLASS_PATH = "model/label2class.joblib"
-MODEL_PATH = "model/trained_ann_model2.h5"
+MODEL_PATH = "model/trained_ann_model.h5"
 
 
 def main() -> None:
