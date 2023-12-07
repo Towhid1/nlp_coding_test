@@ -33,6 +33,16 @@ Word    Tag
 ```
 In the provided example, "দেশের" constitutes a complete location. The initial word is labeled as B-LOC, and subsequent words, such as "অর্থনীতি," are marked as O since they do not correspond to any specific tag.
 
+## Thought Process
+My first thought was it is Named-entity recognition (NER). And Machine Learning wise it is classification problem. I treated it as a classification problem. To gain a better understanding of the data, I loaded the dataset and performed visualization, revealing an imbalance issue in the distribution plot.
+
+Also our focus is person name so I removed the samples without person name and did under-sampling for tag like `O`. That help to solve imbalance issue. I skipped standard pre-processing like stemming because avaible libs not working. One common issue with them is - `অমর্ত্য সেন` became -> `অমর্ত্য স` after stemming.
+
+Person name average length is about 2. So I took only 3 surrunding words/token from both side of candidate word as feature. As you know we can not use `str` as features we need math representation for word/token. Word2vec is smart way to represent word. I used word2vec.
+
+For the model, I chose a simple multi-layered Artificial Neural Network (ANN). 2 reasons behind this decision. First one is faster training and better performance. secound one is small dataset.
+
+
 
 ## How to train
 To train the model from scratch, follow these steps:
@@ -51,7 +61,7 @@ To train the model from scratch, follow these steps:
     pip install -r requirements.txt
     ```
 2. Get names from sentence. Sentence need to pass inside qutation.
-    - Example:
+    - Example with name not exist is both training and testing dataset:
     ```bash
     python predict.py "আব্দুর রহিম নামের কাস্টমারকে একশ টাকা বাকি দিলাম"
     ```
