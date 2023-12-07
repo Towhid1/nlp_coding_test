@@ -28,4 +28,5 @@ if __name__ == "__main__":
         predict(arg)
     else:
         print(
-            "No arg!\nTry this example: python predict.py 'বন্দর থানার ভারপ্রাপ্ত কর্মকর্তা সঞ্জয় সিনহা বলেন'")
+            "No arg!\nTry this example: python predict.py 'বন্দর থানার ভারপ্রাপ্ত কর্মকর্তা সঞ্জয় সিনহা বলেন'"
+        )
